@@ -1,6 +1,6 @@
 // app/contact/page.tsx
 import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
+
 
 export default function ContactPage() {
   return (
@@ -78,7 +78,7 @@ export default function ContactPage() {
             </div>
             {/* Map Placeholder */}
             <div className="mt-8 rounded-lg overflow-hidden">
-                 <Image src="https://images.unsplash.com/photo-1572455255439-f9f950c455c9?q=80&w=1974&auto=format&fit=crop" alt="Map location" width={600} height={400} className="w-full object-cover"/>
+                 <img src="https://images.unsplash.com/photo-1572455255439-f9f950c455c9?q=80&w=1974&auto=format&fit=crop" alt="Map location" width={600} height={400} className="w-full object-cover"/>
             </div>
           </div>
         </div>

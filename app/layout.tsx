@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className={`${inter.className} bg-gray-50 dark:bg-black`}>
+      <body className={`${inter.className} bg-gray-50 dark:bg-black`} suppressHydrationWarning>
         <Header />
         <main>{children}</main>
         <Footer />

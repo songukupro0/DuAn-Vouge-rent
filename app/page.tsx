@@ -1,5 +1,5 @@
 // app/page.tsx
-import Image from "next/image";
+
 import { StarIcon, UserIcon } from "@heroicons/react/20/solid";
 import {
   CurrencyDollarIcon,
@@ -18,7 +18,7 @@ const products = [
     price: "5.500.000đ/ngày",
     description: "Sang trọng và công nghệ đỉnh cao, phù hợp cho doanh nhân và sự kiện quan trọng.",
     imageSrc:
-      "https://images.unsplash.com/photo-1617092496783-e349a2153e3c?q=80&w=1974&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop",
     imageAlt: "Mercedes-Benz S-Class in black.",
   },
   {
@@ -38,7 +38,7 @@ const products = [
     price: "4.800.000đ/ngày",
     description: "Thiết kế tinh tế, hiện đại cùng trải nghiệm lái xe êm ái, yên tĩnh.",
     imageSrc:
-      "https://images.unsplash.com/photo-1612884376935-c1998b3c387b?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop",
     imageAlt: "Front view of a silver Audi A8.",
   },
    {
@@ -48,7 +48,7 @@ const products = [
     price: "6.000.000đ/ngày",
     description: "Đỉnh cao của sự sang trọng và tin cậy từ Nhật Bản, với nội thất thủ công.",
     imageSrc:
-      "https://images.unsplash.com/photo-1627916927588-3932793c18b5?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop",
     imageAlt: "A dark Lexus LS 500h sedan.",
   },
 ];
@@ -120,14 +120,20 @@ export default function Home() {
   return (
     <div className="bg-white dark:bg-black">
       {/* Banner Section */}
-      <div className="relative h-96 w-full sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+      <div className="relative h-96 w-full sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden bg-black">
         <video
-          className="absolute z-[-1] top-0 left-0 w-full h-full object-cover"
-          src="https://www.mercedes-benz.com.vn/content/dam/vietnam/passengercars/homepage-stage/8251246_2023_MB_ROS_EClass_Exclusive_Cinema_Hero_30Sec_Clean_1920x1080px%20original.mp4"
-          autoPlay
-       
-        ></video>
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+  className="absolute z-[-1] top-0 left-0 w-full h-full object-cover"
+  autoPlay
+  loop
+  muted
+  playsInline
+>
+  <source
+    src="https://www.mercedes-benz.com.vn/content/dam/vietnam/passengercars/homepage-stage/8251246_2023_MB_ROS_EClass_Exclusive_Cinema_Hero_30Sec_Clean_1920x1080px%20original.mp4"
+    type="video/mp4"
+  />
+</video>
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <div className="text-center text-white p-4 z-10">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               Trải Nghiệm Đẳng Cấp
@@ -159,11 +165,9 @@ export default function Home() {
             {products.map((product) => (
               <div key={product.id} className="group relative">
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                  <Image
+                  <img
                     src={product.imageSrc}
                     alt={product.imageAlt}
-                    layout="fill"
-                    objectFit="cover"
                     className="h-full w-full object-cover object-center group-hover:opacity-75"
                   />
                 </div>
@@ -217,16 +221,14 @@ export default function Home() {
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
             <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16">
               {features.map((feature) => (
-                <div key={feature.name} className="flex flex-col">
-                    <div className="flex items-center gap-x-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                          <feature.icon className="h-6 w-6 text-white" aria-hidden="true" />
-                        </div>
-                        <h3 className="text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                            {feature.name}
-                        </h3>
-                    </div>
-                  <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">{feature.description}</p>
+                <div key={feature.name} className="relative pl-16">
+                  <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                    <feature.icon className="h-6 w-6 text-white" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                    {feature.name}
+                  </h3>
+                  <p className="mt-2 text-base leading-7 text-gray-600 dark:text-gray-300">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -245,25 +247,21 @@ export default function Home() {
               Niềm tin và sự hài lòng của bạn là thành công của VougeRent.
             </p>
           </div>
-          <div className="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
-            <div className="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
-              {testimonials.map((testimonial) => (
-                <div key={testimonial.author.handle} className="pt-8 sm:inline-block sm:w-full sm:px-4">
-                  <figure className="rounded-2xl bg-white dark:bg-gray-900 p-8 text-sm leading-6">
-                    <blockquote className="text-gray-900 dark:text-gray-300">
-                      <p>{`“${testimonial.body}”`}</p>
-                    </blockquote>
-                    <figcaption className="mt-6 flex items-center gap-x-4">
-                      <Image className="h-10 w-10 rounded-full bg-gray-50 object-cover" src={testimonial.author.imageUrl} alt="" width={40} height={40}/>
-                      <div>
-                        <div className="font-semibold text-gray-900 dark:text-white">{testimonial.author.name}</div>
-                        <div className="text-gray-600 dark:text-gray-400">{`@${testimonial.author.handle}`}</div>
-                      </div>
-                    </figcaption>
-                  </figure>
-                </div>
-              ))}
-            </div>
+          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <figure key={testimonial.author.handle} className="rounded-2xl bg-white dark:bg-gray-900 p-8 text-sm leading-6">
+                <blockquote className="text-gray-900 dark:text-gray-300">
+                  <p>{`“${testimonial.body}”`}</p>
+                </blockquote>
+                <figcaption className="mt-6 flex items-center gap-x-4">
+                  <img className="h-10 w-10 rounded-full bg-gray-50 object-cover" src={testimonial.author.imageUrl} alt="" width={40} height={40}/>
+                  <div>
+                    <div className="font-semibold text-gray-900 dark:text-white">{testimonial.author.name}</div>
+                    <div className="text-gray-600 dark:text-gray-400">{`@${testimonial.author.handle}`}</div>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </div>

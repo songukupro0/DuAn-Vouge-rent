@@ -1,5 +1,5 @@
 // app/about/page.tsx
-import Image from "next/image";
+
 import { UserGroupIcon, StarIcon, CalendarDaysIcon, CheckBadgeIcon } from "@heroicons/react/24/outline";
 
 const teamMembers = [
@@ -45,11 +45,10 @@ export default function AboutPage() {
     <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden pt-14">
-         <Image
+         <img
           src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=2070&auto=format&fit=crop"
           alt="About us banner"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
-          layout="fill"
         />
         <div className="absolute inset-0 bg-gray-900 bg-opacity-60"></div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 relative">
@@ -97,7 +96,7 @@ export default function AboutPage() {
                             </dl>
                         </div>
                     </div>
-                     <Image
+                     <img
                         src="https://images.unsplash.com/photo-1617503752587-77ae121267b1?q=80&w=1932&auto=format&fit=crop"
                         alt="Office workspace"
                         className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
@@ -125,7 +124,7 @@ export default function AboutPage() {
           >
             {teamMembers.map((person) => (
               <li key={person.name} className="text-center">
-                <Image
+                <img
                   className="mx-auto h-56 w-56 rounded-full object-cover"
                   src={person.imageUrl}
                   alt={person.name}
